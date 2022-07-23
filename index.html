@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stickman Toys Puzzle</title>
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+        .user{
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" style="width: 100%">
+        <div id="playPanel" style="padding:5px;display:none;">
+            <h3 id="imgTitle" style="padding: 2% 0; font-size: 24px; font-weight: bold;">Stickman Toys Puzzle
+            </h3>
+            <p class="user">By !kangmambak#8111</p>
+            <hr />
+            <div style="display:inline-block; margin-left:5%; width:95%; vertical-align:top;">
+                <ul id="sortable" class="sortable"></ul>
+                <div id="actualImageBox">
+                    <div id="stepBox">
+                        <div>Steps:</div>
+                        <div id="moveCount" class="moveCount">0</div>
+                    </div>
+                    <div id="timeBox">
+                        Time Taken: <span id="timerPanel"></span> secs
+                    </div>
+                    <img id="actualImage" />
+                    <div>Make the Puzzle become this one </div>
+                    <p id="levelPanel">
+                        <input type="radio" name="level" id="easy" checked="checked" value="3"
+                            onchange="imagePuzzle.startGame(images, this.value);" /> <label for="easy">Easy</label>
+                        <input type="radio" name="level" id="normal" value="4"
+                            onchange="imagePuzzle.startGame(images, this.value);" /> <label for="normal">Normal</label>
+                        <input type="radio" name="level" id="master" value="5"
+                            onchange="imagePuzzle.startGame(images, this.value);" /> <label for="master">Master</label>
+                    </p>
+                    <div>
+                        <button id="newPhoto" type="button" class="btn" onclick="rerun();">Another Photo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gameOver" style="display:none;">
+            <div class="win">
+                <h2 style="text-align:center; font-weight: bold;">Finished !</h2>
+                Congratulations! <br /> The Puzzle Has been Completed.
+                <br /> Your Moves: <span id="moveCount" class="moveCount">0</span>
+                <br /> Time Taken: <span class="timeCount">0</span> seconds<br />
+                <div>
+                    <button type="button" onclick="window.location.reload(true);">Play Again</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+        <script>
+            var images = [
+                // { src: 'images/1.png', title: '' },
+                { src: '/images/2.png', title: '' },
+                { src: '/images/22.png', title: '' },
+                // { src: 'images/3.png', title: '' },
+                // { src: 'images/4.png', title: '' },
+            ];
+
+            window.onload = function () {
+                var gridSize = document.querySelector('#levelPanel input[type="radio"]:checked').getAttribute('value');
+                imagePuzzle.startGame(images, gridSize);
+            };
+            function rerun() {
+                var gridSize = document.querySelector('#levelPanel input[type="radio"]:checked').getAttribute('value');
+                imagePuzzle.startGame(images, gridSize);
+            }
+        </script>
+    </div>
+</body>
+
+</html>
